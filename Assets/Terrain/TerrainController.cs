@@ -37,7 +37,7 @@ namespace RMGD {
 		// ----------------------------------------------------------------------------------------
 
 		[ContextMenu("Build Mesh From Collision Data")]
-		private void buildMesh() {
+		public void BuildMesh() {
 
 			// calculate the mesh's triangles
 			Triangulator tr = new Triangulator(terrainCollision.points);
@@ -64,7 +64,7 @@ namespace RMGD {
 
 		private void Start() {
 
-			buildMesh();
+			BuildMesh();
 		}
 	}
 
