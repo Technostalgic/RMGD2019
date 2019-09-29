@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 00f8cdec1a9fe43b492cbbdb5be55557
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - roomSprite: {fileID: 21300000, guid: 13468c4adacbc4582a59f0bee847129d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
