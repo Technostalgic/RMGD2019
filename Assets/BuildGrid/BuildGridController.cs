@@ -61,6 +61,8 @@ namespace RMGD {
 			}
 		}
 
+        public static BuildGridController instance;
+
 		// ----------------------------------------------------------------------------------------
 
 		private void constructGridHighlight() {
@@ -79,6 +81,7 @@ namespace RMGD {
 			tileHighlight.size = grid.cellSize;
 		}
 
+
 		// ----------------------------------------------------------------------------------------
 
 		private void Update() {
@@ -86,6 +89,7 @@ namespace RMGD {
 		}
 
 		private void Awake() {
+            instance = this;
 			constructGridHighlight();
 		}
 	}

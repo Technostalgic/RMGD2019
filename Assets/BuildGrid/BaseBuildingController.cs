@@ -6,33 +6,41 @@ namespace RMGD {
     
 
 
-	public class BaseBuildingController : MonoBehaviour {
-        [SerializeField]
-        public GameObject roomPrefab;
+	public class BaseBuildingController : MonoBehaviour { 
 
-        [ContextMenu("create room")]
+
+        [ContextMenu("spawn room - generic")]
         private void tempCreateRoom()
         {
-            this.createRoom();
+            this.createRoom(RoomTypes.Generic);
+        }
+        [ContextMenu("spawn room - generator")]
+        private void tempCreateGeneratorRoom()
+        {
+            this.createRoom(RoomTypes.Generator);
         }
 
-        public void createRoom(RMGD.RoomTypes roomType = RoomTypes.generic)
+        public void createRoom(RMGD.RoomTypes RoomType = RoomTypes.Generic)
         {
-            GameObject newRoom = Instantiate(roomPrefab) as GameObject;
-            
-            newRoom.transform.parent = this.transform;
-            newRoom.GetComponent<Room>().roomData = ScriptableObject.CreateInstance<generatorRoom>();
-
-
-
+            //make sure a valid room type was passed
+            if (RoomType == RoomTypes.notYetDefined)
+                throw new System.Exception("'notYetDefined' is not a valid room type to create");
+            //find the prefab given the room type
+            GameObject RoomPrefab = (GameObject)Resources.Load("Rooms/" + RoomType.ToString() + "Room", typeof(GameObject));
+            if (RoomPrefab == null)
+                throw new System.Exception("Unable to load room type, are you sure it exists in the resources/Rooms directory?");
+            //instantiate the prefab and then set the parent
+            GameObject NewRoom = Instantiate(RoomPrefab) as GameObject;
+            NewRoom.transform.parent = this.transform;
         }
     }
 
     public enum RoomTypes
     {
-        generic,
-        generator,
-        livingQuarters,
-        storage,
+        notYetDefined,
+        Generic,
+        Generator,
+        LivingQuarters,
+        Storage,
     }
 }
